@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 DESC_SHORT = 'routing'
 DESC_LONG = '\n    Quagga 0.98.6-5\n  '
@@ -46,7 +46,7 @@ def get_contents(directory):
 
 def create_data(directory):
 	res = ""
-	print directory
+	print(directory)
 	contents = get_contents(directory)
 	contents.sort()
 	for i in contents:
@@ -95,7 +95,7 @@ def create_data(directory):
 # Read files
 
 if len(sys.argv) != 2:
-	print "Usage: %s <dir>" % (sys.argv[0])
+	print("Usage: %s <dir>" % (sys.argv[0]))
 	sys.exit(2)
 
 data = create_data(sys.argv[1])
@@ -128,7 +128,7 @@ header += VER + '\x00\x00\x00\x00'
 
 header = header[0:4] + pack("I", len(header) + len(parts) - 8) + header[8:]
 
-f = open(sys.argv[1] + ".npk", "w")
+f = open(sys.argv[1] + ".npk", "wb")
 f.write(header)
 f.write(parts)
 f.close()
